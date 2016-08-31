@@ -49,7 +49,7 @@ $month=24; // Required. The total number of payments for the loan.
 $interest=5;  // Required. Rate -  Required. The interest rate for the loan.
 $left_open=1000; //    Optional. The future value, or a cash balance you want to attain after the last payment is made. If fv is omitted, it is assumed to be 0 (zero), that is, the future value of a loan is 0.
 
-$objct = new PMT($loan, $month, 5, $left_open);
+$objct = new PMT($loan, $month, $interest, $left_open);
 
 echo $objct->result;
 
