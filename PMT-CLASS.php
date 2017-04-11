@@ -1,6 +1,6 @@
 <?php
 // PMT calculation class
-// Author: Davit Aghayan   davitdeveloper
+// Author: Davit Aghayan   TheMaster
 
 class PMT {
 
