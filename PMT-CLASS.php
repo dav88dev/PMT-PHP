@@ -4,53 +4,107 @@
 
 class PMT {
 
-    protected $loan;
-    protected $month;
-    protected $interest;
-    protected $left_open;
-    public $result;
-    function __construct($loan,$month, $interest,  $left_open=0)
+    /**
+     * Required. The present value, or the total amount that a series of future payments is worth now; also known as the principal.
+     *
+     * @var $loan float
+     */
+    private $loan;
+
+    /**
+     * The total number of payments for the loan.
+     *
+     * @var $month integer
+     */
+    private $month;
+
+    /**
+     * Rate -   The interest rate for the loan.
+     *
+     * @var $interest float
+     */
+    private $interest;
+
+    /**
+     * Rate -  Optional. The future value,
+     * or a cash balance you want to attain after the last payment is made.
+     * If fv is omitted, it is assumed to be 0 (zero),
+     * that is, the future value of a loan is 0.
+     *
+     * @var $left_open float
+     */
+    private $left_open;
+
+
+
+    /**
+     * Checking PHP version, script compatible with PHP version 7.0 or higher
+     */
+    public function __construct()
     {
 
+        if (version_compare(PHP_VERSION, '7.0.0', '<')) {
 
-        if(func_num_args()<3 or func_num_args() > 4){
-
-            die("Something went wrong");
-
+            throw new Exception('PHP version 7.0 or higher accepted');
         }
 
-        else {
-
-
-            $this->loan= (float) $loan;
-            $this->month= (int) $month;
-            $this->interest=(float) $interest;
-            $this->left_open=(float) $left_open;
-	    $this->result= SELF::calculation($interest, $month, $loan, $left_open);
-        }
     }
 
 
-
-    private  function calculation($interest, $month, $loan, $left_open)
+    /**
+     * Set required properties
+     * @param  float   $loan  loan
+     * @param  integer $month month
+     * @param  float   $interest interest
+     * @param  float   $left_open  optional
+     * @return void
+     */
+    public function setValues(float $loan,int $month,float $interest, float $left_open=0):void
     {
-        $month = $month;
-        $interest = $interest / 1200;
-        $amount = $interest * (-$loan * pow((1 + $interest), $month) + $left_open) / (1 - pow((1 + $interest), $month));
-        return number_format($amount, 2, '.', '');  //number >>> english notation without thousands separator
+
+            $this->loan= $loan;
+            $this->month=  $month;
+            $this->interest= $interest;
+            $this->left_open= $left_open;
+    }
+
+
+    /**
+     * Set required properties
+     * @return float
+     */
+    public function getResult():float {
+
+
+        return number_format($this->calculation(), 2, '.', '');  //number >>> english notation without thousands separator
+
+
+    }
+
+
+    /**
+     * Calculate PMT
+     * @return float
+     */
+    private  function calculation():float
+    {
+        $interest = $this->interest / 1200;
+
+        return  ($interest * (-($this->loan) * pow((1 + $interest), $this->month) + $this->left_open) / (1 - pow((1 + $interest), $this->month)));
+
     }
 
 }
 
 
 
-$loan=10000; // Required. The present value, or the total amount that a series of future payments is worth now; also known as the principal. 
-$month=24; // Required. The total number of payments for the loan.
-$interest=5;  // Required. Rate -  Required. The interest rate for the loan.
-$left_open=1000; //    Optional. The future value, or a cash balance you want to attain after the last payment is made. If fv is omitted, it is assumed to be 0 (zero), that is, the future value of a loan is 0.
 
-$objct = new PMT($loan, $month, $interest, $left_open);
+$pmt = new PMT();
 
-echo $objct->result;
+$pmt->setValues(10000, 24, 5, 1000);
+
+var_dump($pmt->getResult());
+
+
 
 ?>
