@@ -70,7 +70,7 @@ class PMT {
 
 
     /**
-     * Set required properties
+     * Get result
      * @return float
      */
     public function getResult():float {
