@@ -72,7 +72,7 @@ class PMT {
      */
     public function getResult():float {
 
-        //number >>> english notation without thousands separator
+        //english notation without thousands separator
         return number_format($this->calculation(), 2, '.', '');  
     }
 
