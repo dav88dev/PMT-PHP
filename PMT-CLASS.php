@@ -5,7 +5,7 @@
 class PMT {
 
     /**
-     * Required. The present value, or the total amount that a series of future payments is worth now; also known as the principal.
+     * The present value, or the total amount that a series of future payments is worth now; also known as the principal.
      *
      * @var $loan float
      */
@@ -72,7 +72,8 @@ class PMT {
      */
     public function getResult():float {
 
-        return number_format($this->calculation(), 2, '.', '');  //number >>> english notation without thousands separator
+        //number >>> english notation without thousands separator
+        return number_format($this->calculation(), 2, '.', '');  
     }
 
 
