@@ -7,21 +7,21 @@ class PMT {
     /**
      * The present value, or the total amount that a series of future payments is worth now; also known as the principal.
      *
-     * @var $loan float
+     * @var float $loan
      */
     private $loan;
 
     /**
      * The total number of payments for the loan.
      *
-     * @var $month integer
+     * @var integer $month 
      */
     private $month;
 
     /**
      * Rate -   The interest rate for the loan.
      *
-     * @var $interest float
+     * @var float $interest
      */
     private $interest;
 
@@ -31,7 +31,7 @@ class PMT {
      * If fv is omitted, it is assumed to be 0 (zero),
      * that is, the future value of a loan is 0.
      *
-     * @var $left_open float
+     * @var float $left_open
      */
     private $left_open;
 
