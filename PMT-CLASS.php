@@ -2,7 +2,8 @@
 // PMT calculation class
 // Author: Davit Aghayan   TheMaster
 
-class PMT {
+class PMT 
+{
 
     /**
      * The present value, or the total amount that a series of future payments is worth now; also known as the principal.
@@ -39,7 +40,8 @@ class PMT {
     /**
      * Checking PHP version, script compatible with PHP version 7.0 or higher
      */
-    public function __construct() {
+    public function __construct() 
+    {
 
         if (version_compare(PHP_VERSION, '7.0.0', '<')) {
 
@@ -57,7 +59,8 @@ class PMT {
      * @param  float   $left_open  optional
      * @return void
      */
-    public function setValues(float $loan,int $month,float $interest, float $left_open=0):void {
+    public function setValues(float $loan,int $month,float $interest, float $left_open=0):void 
+    {
 
             $this->loan= $loan;
             $this->month=  $month;
@@ -70,7 +73,8 @@ class PMT {
      * Get result
      * @return float
      */
-    public function getResult():float {
+    public function getResult():float 
+    {
 
         //english notation without thousands separator
         return number_format($this->calculation(), 2, '.', '');  
@@ -81,7 +85,8 @@ class PMT {
      * Calculate PMT
      * @return float
      */
-    private  function calculation():float {
+    private  function calculation():float 
+    {
         
         $interest = $this->interest / 1200;
 
