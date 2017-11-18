@@ -43,7 +43,7 @@ class PMT
     public function __construct() 
     {
 
-        if (version_compare(PHP_VERSION, '7.0.0', '<')) {
+        if (version_compare(PHP_VERSION, '7.1.0', '<')) {
 
             throw new Exception('PHP version 7.0 or higher accepted');
         }
