@@ -1,6 +1,6 @@
 <?php
 // PMT calculation class
-// Author: Davit Aghayan   TheMaster
+// Author: Davit Aghayan
 
 class PMT 
 {
@@ -45,7 +45,7 @@ class PMT
 
         if (version_compare(PHP_VERSION, '7.1.0', '<')) {
 
-            throw new Exception('PHP version 7.0 or higher accepted');
+            throw new Exception('PHP version 7.1 or higher accepted');
         }
 
     }
@@ -53,6 +53,7 @@ class PMT
 
     /**
      * Set required properties
+     *
      * @param  float   $loan  loan
      * @param  integer $month month
      * @param  float   $interest interest
