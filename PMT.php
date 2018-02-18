@@ -46,7 +46,6 @@ class PMT
         }
     }
 
-
     /**
      * Set required properties
      *
