@@ -36,18 +36,14 @@ class PMT
      */
     private $left_open;
 
-    
     /**
      * Checking PHP version, script compatible with PHP version 7.0 or higher
      */
     public function __construct() 
     {
-
         if (version_compare(PHP_VERSION, '7.1.0', '<')) {
-
             throw new Exception('PHP version 7.1 or higher accepted');
         }
-
     }
 
 
@@ -62,13 +58,11 @@ class PMT
      */
     public function setValues(float $loan,int $month,float $interest, float $left_open=0):void 
     {
-
             $this->loan= $loan;
             $this->month=  $month;
             $this->interest= $interest;
             $this->left_open= $left_open;
     }
-
 
     /**
      * Get result
@@ -76,11 +70,9 @@ class PMT
      */
     public function getResult():float 
     {
-
         //english notation without thousands separator
         return number_format($this->calculation(), 2, '.', '');  
     }
-
 
     /**
      * Calculate PMT
@@ -88,21 +80,15 @@ class PMT
      */
     private  function calculation():float 
     {
-        
         $interest = $this->interest / 1200;
-
         return  ($interest * (-($this->loan) * pow((1 + $interest), $this->month) + $this->left_open) / (1 - pow((1 + $interest), $this->month)));
-
     }
 
 }
 
-
+//Example
 $pmt = new PMT();
-
 $pmt->setValues(10000, 24, 5, 1000);
-
 var_dump($pmt->getResult());
-
 
 ?>
